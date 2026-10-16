@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowDown, Sparkles, Compass, ShieldCheck } from 'lucide-react';
 import { FizzParticles } from './FizzParticles';
+import { APP_IMAGES } from '../assets/images';
 
 export const Hero: React.FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [heroImgSrc, setHeroImgSrc] = useState(APP_IMAGES.heroBottle);
 
   useEffect(() => {
+    // Respect prefers-reduced-motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const handleMouseMove = (e: MouseEvent) => {
-      // Respect prefers-reduced-motion
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const { innerWidth, innerHeight } = window;
       const x = (e.clientX / innerWidth - 0.5) * 15;
       const y = (e.clientY / innerHeight - 0.5) * 15;
@@ -133,7 +135,8 @@ export const Hero: React.FC = () => {
             >
               <div className="relative rounded-3xl overflow-hidden p-2 bg-gradient-to-b from-white/20 via-transparent to-black/30 backdrop-blur-xs border border-white/25 shadow-2xl shadow-black/40">
                 <img
-                  src="/src/assets/images/coca_hero_bottle_1792176774623.jpg"
+                  src={heroImgSrc}
+                  onError={() => setHeroImgSrc('/assets/images/coca_hero_bottle_1792176774623.jpg')}
                   alt="Frosty contoured glass bottle of Coca-Cola with beaded ice condensation droplets, floating ice cubes, and rising effervescent bubbles"
                   loading="lazy"
                   referrerPolicy="no-referrer"

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Leaf, Droplets, Users, Recycle, Globe, Award, Heart } from 'lucide-react';
+import { APP_IMAGES } from '../assets/images';
 
 export const Sustainability: React.FC = () => {
   const [bottlesRecycled, setBottlesRecycled] = useState<number>(25);
@@ -47,7 +48,10 @@ export const Sustainability: React.FC = () => {
           <div className="bg-white text-black rounded-3xl overflow-hidden shadow-2xl border border-black/10 flex flex-col justify-between group">
             <div className="relative h-64 sm:h-80 overflow-hidden">
               <img
-                src="/src/assets/images/sustainability_clean_nature_1792176777749.jpg"
+                src={APP_IMAGES.sustainability}
+                onError={(e) => {
+                  e.currentTarget.src = '/assets/images/sustainability_clean_nature_1792176777749.jpg';
+                }}
                 alt="Clear 100% recycled beverage bottle on crystalline water ripples surrounded by lush green leaves and dewdrops"
                 loading="lazy"
                 referrerPolicy="no-referrer"
@@ -83,7 +87,10 @@ export const Sustainability: React.FC = () => {
           <div className="bg-white text-black rounded-3xl overflow-hidden shadow-2xl border border-black/10 flex flex-col justify-between group">
             <div className="relative h-64 sm:h-80 overflow-hidden">
               <img
-                src="/src/assets/images/friends_sharing_coke_1792176777240.jpg"
+                src={APP_IMAGES.friendsSharingCoke}
+                onError={(e) => {
+                  e.currentTarget.src = '/assets/images/friends_sharing_coke_1792176777240.jpg';
+                }}
                 alt="Diverse group of smiling friends toasting cold bottles of Coca-Cola outdoors during golden hour sunset"
                 loading="lazy"
                 referrerPolicy="no-referrer"

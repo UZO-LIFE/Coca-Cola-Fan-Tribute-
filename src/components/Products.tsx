@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Info, X, Check, Droplets, Flame, Coffee } from 'lucide-react';
 import { ProductVariant } from '../types';
+import { APP_IMAGES } from '../assets/images';
 
 const productList: ProductVariant[] = [
   {
@@ -17,7 +18,7 @@ const productList: ProductVariant[] = [
     badge: 'The Original',
     flavorNotes: ['Madagascar Vanilla', 'Caramelized Sugar', 'Citrus Peel', 'Warm Spice'],
     formats: ['330ml Can', '250ml Glass Contour', '500ml rPET', 'Fountain Draft'],
-    image: '/src/assets/images/coca_hero_bottle_1792176774623.jpg',
+    image: APP_IMAGES.heroBottle,
   },
   {
     id: 'zero',
@@ -33,7 +34,7 @@ const productList: ProductVariant[] = [
     badge: 'Zero Sugar',
     flavorNotes: ['Original Cola Profile', 'Crisp effervescence', 'Zero Aftertaste', 'Subtle Citrus'],
     formats: ['330ml Sleek Can', '500ml Bottle', '6-Pack Contours', 'Fountain'],
-    image: '/src/assets/images/coke_zero_bottle_1792176776309.jpg',
+    image: APP_IMAGES.cokeZeroBottle,
   },
   {
     id: 'cherry',
@@ -174,6 +175,13 @@ export const Products: React.FC = () => {
                 {product.image ? (
                   <img
                     src={product.image}
+                    onError={(e) => {
+                      if (product.id === 'classic') {
+                        e.currentTarget.src = '/assets/images/coca_hero_bottle_1792176774623.jpg';
+                      } else if (product.id === 'zero') {
+                        e.currentTarget.src = '/assets/images/coke_zero_bottle_1792176776309.jpg';
+                      }
+                    }}
                     alt={`${product.name} product bottle beaded with frosty condensation and bubbles`}
                     loading="lazy"
                     referrerPolicy="no-referrer"

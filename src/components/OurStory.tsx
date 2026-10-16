@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Clock, BookOpen, Sparkles, Award, MapPin } from 'lucide-react';
 import { TimelineEvent } from '../types';
+import { APP_IMAGES } from '../assets/images';
 
 const timelineData: TimelineEvent[] = [
   {
@@ -138,7 +139,10 @@ export const OurStory: React.FC = () => {
         <div className="mb-20 bg-[#E41E2B] text-white rounded-3xl overflow-hidden shadow-2xl border border-white/20 grid grid-cols-1 lg:grid-cols-12 gap-0">
           <div className="lg:col-span-7 relative min-h-[320px] lg:min-h-[440px] overflow-hidden">
             <img
-              src="/src/assets/images/vintage_soda_fountain_1792176776553.jpg"
+              src={APP_IMAGES.vintageSodaFountain}
+              onError={(e) => {
+                e.currentTarget.src = '/assets/images/vintage_soda_fountain_1792176776553.jpg';
+              }}
               alt="1886 Jacobs' Pharmacy vintage soda fountain counter with polished brass dispensers, dark wood counter, and antique glass bottles in Atlanta"
               loading="lazy"
               referrerPolicy="no-referrer"
