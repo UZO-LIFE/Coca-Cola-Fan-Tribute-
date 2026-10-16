@@ -1,0 +1,6 @@
+{
+  "name": "Coca-Cola Fan Tribute Experience",
+  "description": "A responsive, modern fan tribute celebrating the iconic history, products, and global spirit of Coca-Cola.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
